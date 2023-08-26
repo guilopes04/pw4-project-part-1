@@ -4,7 +4,7 @@ import { Controller } from '../../presentation/helpers/controller'
 
 export const adapterEvent = (req: Request, controller: Controller) => {
   const httpRequest: HttpRequest = {
-    body: (req.body && JSON.parse(req.body)) || {},
+    body: req.body || {},
     pathParameters: req.params || {},
     queryParameters: req.query || {}
   }

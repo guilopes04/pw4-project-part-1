@@ -26,7 +26,7 @@ export class MockGetDisciplinesRepository implements GetDisciplinesRepository {
 }
 
 const parseDisciplineFromCSV = (line: string): disciplinesWithStudents => {
-  const [disciplineName, studentId] = line.split(',')
+  const [studentId, disciplineName] = line.split(',')
   return {
     disciplineName,
     studentId

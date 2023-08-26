@@ -1,7 +1,5 @@
-import { Discipline } from './discipline'
-
 export type Student = {
-  id: string
+  studentId: string
   name: string
   cpf: string
   birthDate: string

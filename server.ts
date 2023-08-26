@@ -10,7 +10,7 @@ import {
 const app = express()
 const port = 3000
 
-app.use(cors())
+app.use(cors(), express.json())
 
 app.use('/', router)
 

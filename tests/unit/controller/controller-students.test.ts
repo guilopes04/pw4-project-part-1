@@ -10,8 +10,10 @@ const mockGetStudents = {
 }
 
 const mockHttpRequest = {
+  pathParameters: {
+    studentId: 'student-id'
+  },
   queryParameters: {
-    id: 'student-id',
     getDisciplines: true
   }
 }

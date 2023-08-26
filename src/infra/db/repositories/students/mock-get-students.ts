@@ -23,9 +23,9 @@ export class MockGetStudentsRepository implements GetStudentsRepository {
 }
 
 const parseStudentFromCSV = (line: string): Student => {
-  const [id, cpf, name, birthDate] = line.split(',')
+  const [studentId, cpf, name, birthDate] = line.split(',')
   return {
-    id,
+    studentId,
     cpf,
     name,
     birthDate
@@ -44,7 +44,7 @@ const getStudents = (id?: string) => {
   for (let line = 1; line < lines.length; line++) {
     const student: Student = parseStudentFromCSV(lines[line])
     if (id) {
-      if (id === student.id) {
+      if (id === student.studentId) {
         students = [student]
         break
       }
@@ -79,7 +79,7 @@ const getStudentDiscipline = (id: string): string[] => {
 const parseDisciplineFromCSV = (
   line: string
 ): { disciplineName: string; studentId: string } => {
-  const [disciplineName, studentId] = line.split(',')
+  const [studentId, disciplineName] = line.split(',')
   return {
     disciplineName,
     studentId

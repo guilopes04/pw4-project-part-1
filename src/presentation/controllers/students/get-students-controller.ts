@@ -11,7 +11,9 @@ export class GetStudentsController implements Controller {
     try {
       console.log('• starting event with: ', httpRequest)
 
-      const studentId = httpRequest.queryParameters?.id
+      const studentId = httpRequest.pathParameters
+        ? httpRequest.pathParameters.studentId
+        : null
       const getDisciplines = httpRequest.queryParameters?.getDisciplines
         ? true
         : false

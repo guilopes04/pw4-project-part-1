@@ -36,15 +36,15 @@ export const generateDisciplinesWithStudents =
       for (let i = 0; i < numberOfDisciplines; i++) {
         disciplinesWithStudents.push({
           disciplineName: disciplines[i],
-          studentId: student.id
+          studentId: student.studentId
         })
       }
     })
 
-    const csvContent = `disciplineName,studentId\n${disciplinesWithStudents
+    const csvContent = `studentId,disciplineName\n${disciplinesWithStudents
       .map(
         (disciplinesWithStudents) =>
-          `${disciplinesWithStudents.disciplineName},${disciplinesWithStudents.studentId}`
+          `${disciplinesWithStudents.studentId},${disciplinesWithStudents.disciplineName}`
       )
       .join('\n')}`
 
@@ -61,17 +61,17 @@ export const generateStudents = (qtd: number): Student[] => {
   const alunos: Student[] = []
   for (let i = 0; i < qtd; i++) {
     alunos.push({
-      id: randomUUID(),
+      studentId: randomUUID(),
       name: `Aluno ${i + 1}`,
       cpf: `CPF${i + 1}`,
       birthDate: '01/01/1990'
     })
   }
 
-  const csvContent = `id,cpf,name,birthDate\n${alunos
+  const csvContent = `studentId,cpf,name,birthDate\n${alunos
     .map(
       (student) =>
-        `${student.id},${student.cpf},${student.name},${student.birthDate}`
+        `${student.studentId},${student.cpf},${student.name},${student.birthDate}`
     )
     .join('\n')}`
 
@@ -119,15 +119,15 @@ export const generateClasses = () => {
     for (let student = studentStart; student !== studentStopped; student++) {
       classes.push({
         className: year,
-        studentId: students[student].id
+        studentId: students[student].studentId
       })
     }
     studentStart = studentStopped
     studentStopped = studentStopped + 40
   })
 
-  const csvContent = `className,studentId\n${classes
-    .map((classObj) => `${classObj.className},${classObj.studentId}`)
+  const csvContent = `studentId,className\n${classes
+    .map((classObj) => `${classObj.studentId},${classObj.className}`)
     .join('\n')}`
 
   fs.writeFileSync('src/infra/db/repositories/classes/classes.csv', csvContent)
@@ -137,9 +137,9 @@ export const generateClasses = () => {
 }
 
 const parseStudentFromCSV = (line: string): Student => {
-  const [id, cpf, name, birthDate] = line.split(',')
+  const [studentId, cpf, name, birthDate] = line.split(',')
   return {
-    id,
+    studentId,
     cpf,
     name,
     birthDate

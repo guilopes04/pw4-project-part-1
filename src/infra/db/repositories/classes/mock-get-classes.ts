@@ -25,7 +25,7 @@ export class MockGetClassesRepository implements GetClassesRepository {
 const parseClassFromCSV = (
   line: string
 ): { className: string; studentId: string } => {
-  const [className, studentId] = line.split(',')
+  const [studentId, className] = line.split(',')
   return {
     className,
     studentId
