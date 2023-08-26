@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // A versão do ECMAScript que você está compilando
+    "module": "CommonJS", // O sistema de módulos a ser usado (Node.js usa CommonJS)
+    "outDir": "./dist", // Diretório de saída para os arquivos compilados
+    "rootDir": "./src", // Diretório raiz dos arquivos TypeScript
+    "esModuleInterop": true, // Permitir interoperabilidade de módulos ES6 e CommonJS
+    "skipLibCheck": true, // Não verificar declarações de bibliotecas
+    "forceConsistentCasingInFileNames": true, // Garantir consistência de maiúsculas/minúsculas em nomes de arquivo
+    "resolveJsonModule": true, // Permitir importação de arquivos JSON como módulos
+    "declaration": true, // Gerar arquivos de declaração (.d.ts)
+    "strictPropertyInitialization": false // Permitir propriedades não inicializadas (pode ser ajustado de acordo com suas preferências)
+  },
+  "include": ["src/**/*.ts"], // Padrão para arquivos TypeScript a serem incluídos
+  "exclude": ["node_modules"] // Pastas a serem excluídas do processo de compilação
+}
