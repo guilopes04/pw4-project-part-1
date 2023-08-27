@@ -92,6 +92,18 @@ export class MissingParamError extends CustomError {
   }
 }
 
+export class StudentDoesNotExistError extends CustomError {
+  constructor(studentId: string) {
+    super({
+      statusCode: 400,
+      errorCode: 'STUDENT_DOES_NOT_EXIST',
+      errorMessage: `Student with studentId ${studentId} does not exists`,
+      localizedTitle: `Student not exists`,
+      localizedMessage: `Estudante com identificador ${studentId} não existe`
+    })
+  }
+}
+
 export class UnprocessableEntityError extends CustomError {
   constructor(...params: string[]) {
     const s = params.join(', ')

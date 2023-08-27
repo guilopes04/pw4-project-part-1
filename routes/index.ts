@@ -4,6 +4,7 @@ import { makeGetStudentsController } from '../src/main/factories/controllers/get
 import { makeGetClassesController } from '../src/main/factories/controllers/get-classes-factory'
 import { makeGetDisciplinesController } from '../src/main/factories/controllers/get-disciplines-factory'
 import { makePostStudentController } from '../src/main/factories/controllers/post-student-factory'
+import { makeDeleteStudentController } from '../src/main/factories/controllers/delete-student-factory'
 
 const router = express.Router()
 
@@ -31,6 +32,16 @@ router.get('/students/:studentId', (req: Request, res: Response) => {
   res.status(response.statusCode).send(response.body)
 })
 
+router.post('/students', (req: Request, res: Response) => {
+  const response = adapterEvent(req, makePostStudentController())
+  res.status(response.statusCode).send(response.body)
+})
+
+router.delete('/students/:studentId', (req: Request, res: Response) => {
+  const response = adapterEvent(req, makeDeleteStudentController())
+  res.status(response.statusCode).send(response.body)
+})
+
 router.get('/class', (req: Request, res: Response) => {
   const response = adapterEvent(req, makeGetClassesController())
   res.status(response.statusCode).send(response.body)
@@ -38,11 +49,6 @@ router.get('/class', (req: Request, res: Response) => {
 
 router.get('/disciplines', (req: Request, res: Response) => {
   const response = adapterEvent(req, makeGetDisciplinesController())
-  res.status(response.statusCode).send(response.body)
-})
-
-router.post('/students', (req: Request, res: Response) => {
-  const response = adapterEvent(req, makePostStudentController())
   res.status(response.statusCode).send(response.body)
 })
 

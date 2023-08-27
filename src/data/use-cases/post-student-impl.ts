@@ -14,8 +14,15 @@ export class PostStudentImpl implements PostStudent {
     if (!student?.studentId) {
       student['studentId'] = randomUUID()
     } else {
+      console.log('deletando')
       this.deleteStudentRepository.delete(student.studentId)
+      console.log('deletado')
     }
-    this.postStudentRepository.post(student)
+
+    setTimeout(() => {
+      console.log('adicionando')
+      this.postStudentRepository.post(student)
+      console.log('adicionado')
+    }, 200)
   }
 }

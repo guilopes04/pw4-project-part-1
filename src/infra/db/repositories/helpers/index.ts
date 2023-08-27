@@ -24,7 +24,9 @@ const getCsvType = (csvType: string): string => {
 
 export const postCsv = (newString: string, csvType: string): void => {
   const entityPath = getCsvType(csvType)
-  fs.writeFileSync(entityPath, newString)
+  console.log('entityPath:', entityPath)
+  if (csvType === 'student') console.log('newString:', newString)
+  fs.writeFileSync(entityPath, newString, 'utf-8')
 }
 
 export const deleteEntityCsv = (

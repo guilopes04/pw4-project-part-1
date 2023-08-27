@@ -1,5 +1,6 @@
 import { Discipline } from '../../domain/entities/discipline'
 import { GetDisciplines } from '../../domain/use-cases/get-disciplines'
+import { MissingParamError } from '../../presentation/helpers/http-helper'
 import { GetDisciplinesRepository } from '../protocols/get-disciplines-repository'
 import { GetStudentsRepository } from '../protocols/get-students-repository'
 
@@ -10,6 +11,8 @@ export class GetDisciplinesImpl implements GetDisciplines {
   ) {}
 
   get(disciplineName: string): Discipline {
+    if (!disciplineName) throw new MissingParamError('disciplineName')
+
     const disciplinesWithStudents =
       this.getDisciplinesRepository.get(disciplineName)
 
